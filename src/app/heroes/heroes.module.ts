@@ -9,6 +9,10 @@ import { MaterialModule } from '../material/material.module';
 import { FormComponent } from './pages/form/form.component';
 import { ListComponent } from './components/list/list.component';
 import { HeroFormComponent } from './components/hero-form/hero-form.component';
+import { EditComponent } from './pages/edit/edit.component';
+import { BackButtonComponent } from './components/back-button/back-button.component';
+import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
+
 
 
 @NgModule({
@@ -16,7 +20,11 @@ import { HeroFormComponent } from './components/hero-form/hero-form.component';
     HomeComponent,
     FormComponent,
     ListComponent,
-    HeroFormComponent
+    HeroFormComponent,
+    EditComponent,
+    BackButtonComponent,
+    ModalConfirmComponent,
+
   ],
   imports: [
     CommonModule,

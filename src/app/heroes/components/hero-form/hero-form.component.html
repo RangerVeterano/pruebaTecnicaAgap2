@@ -1,10 +1,19 @@
 
-<form  [formGroup]="miFormulario">
+<form  [formGroup]="miFormulario" (ngSubmit)="guardar()">
 
     <mat-form-field appearance="fill">
         <mat-label>Nombre heroe</mat-label>
-        <input matInput>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="this.miFormulario.controls['name'].hasError('required')">
+          El nombre del heroe es <strong>requerido</strong>
+        </mat-error>
+        <mat-error *ngIf="this.miFormulario.controls['name'].hasError('minlength')">
+          El nombre del heroe tiene que tener <strong>más de 3 caracteres</strong>
+        </mat-error>
       </mat-form-field>
+
+      <button mat-flat-button color="primary" *ngIf="!hero" type="submit">Añadir</button>
+      <button mat-flat-button color="primary" *ngIf="hero" type="submit">Actualizar</button>
 
 </form>
 

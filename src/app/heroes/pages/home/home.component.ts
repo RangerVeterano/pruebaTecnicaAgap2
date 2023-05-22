@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import { HeroesService } from '../../services/heroes.service';
 import { heroe } from '../../interfaces/heroe.interface';
 
@@ -25,14 +25,26 @@ export class HomeComponent implements OnInit {
     {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
   ];
 
-  constructor( private hs : HeroesService) { }
+  constructor( 
+    private hs : HeroesService,
+    private ref: ChangeDetectorRef
+    ) { }
 
   ngOnInit(): void {
 
     this.hs.getHeroes().subscribe(data => {
       this.heroes = data;
-    })
+    });
 
+  }
+
+  borradoHeroe(hero: number){
+    this.hs.removeHeroe(hero);
+    this.ref.detectChanges();
+  } 
+
+  sendHeroes(){
+    return this.heroes;
   }
 
 }
